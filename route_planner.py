@@ -54,6 +54,10 @@ class Route(object):
     def filter(self, max_height: int) -> 'Route':
         return Route([item for item in self.__point_of_interests if item.height <= max_height])
 
+    def elevation(self) -> int:
+        return max(self.__point_of_interests, key=lambda attraction: attraction.height).height - min(
+            self.__point_of_interests, key=lambda attraction: attraction.height).height
+
     def __str__(self) -> str:
         return '->'.join([str(item) for item in self.__point_of_interests])
 

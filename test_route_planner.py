@@ -152,3 +152,10 @@ def test_attraction_list_factory_size1():
 def test_attraction_list_factory_size2():
     attraction_list = attraction_list_factory(100)
     assert len(attraction_list) == 100
+
+
+def test_elevation(test_starting_point_a, test_starting_point_b, test_attraction_list_a):
+    route_a: Route = route_planner(test_attraction_list_a, test_starting_point_a)
+    route_b: Route = route_planner(test_attraction_list_a, test_starting_point_b, 7)
+    assert route_a.elevation() == 200
+    assert route_b.elevation() == 400
